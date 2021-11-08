@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import { MDBTable, MDBTableHead, MDBTableBody, MDBContainer } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
+
 
 const Table = () => {
     const [posts, setPosts] = useState({blogs: []})
@@ -28,9 +30,11 @@ const Table = () => {
                     <MDBTableBody>
                         {posts.blogs && posts.blogs.map((item)=>(
                             <tr key={item.id}>
+                                <Link to={`/details-page/${item.id}`}>
                                 <td>{item.id}</td>
                                 <td>{item.title}</td>
                                 <td>{item.body}</td>
+                                </Link>
                             </tr>
                             ))
                         }
