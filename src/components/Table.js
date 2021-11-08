@@ -16,31 +16,29 @@ const Table = () => {
         }, [setPosts])
     return (
         <div>
-        <MDBContainer>
-          <MDBTable striped hover className='mt-3'>
-      <MDBTableHead>
-        <tr>
-          <th scope='col'>ID</th>
-          <th scope='col'>Title</th>
-          <th scope='col'>Body</th>
-        </tr>
-      </MDBTableHead>
-      <MDBTableBody>
-          {
-              posts.blogs && posts.blogs.map((item)=>(
-                <tr key={item.id}>
-                {/* <th scope='row'>1</th> */}
-                <td>{item.id}</td>
-                <td>{item.title}</td>
-                <td>{item.body}</td>
-              </tr>
-              ))
-          }
-       
-     
-      </MDBTableBody>
-    </MDBTable>
-        </MDBContainer>
+            <MDBContainer>
+                <MDBTable striped hover className='mt-3'>
+                    <MDBTableHead>
+                        <tr>
+                            <th scope='col'>ID</th>
+                            <th scope='col'>Title</th>
+                            <th scope='col'>Body</th>
+                        </tr>
+                    </MDBTableHead>
+                    <MDBTableBody>
+                        {posts.blogs && posts.blogs.map((item)=>(
+                            <tr key={item.id}>
+                                <td>{item.id}</td>
+                                <td>{item.title}</td>
+                                <td>{item.body}</td>
+                            </tr>
+                            ))
+                        }
+                    
+                    
+                    </MDBTableBody>
+                </MDBTable>
+            </MDBContainer>
         </div>
         );
 }
