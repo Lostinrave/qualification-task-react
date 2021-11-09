@@ -19,7 +19,7 @@ const Table = () => {
     return (
         <div>
             <MDBContainer>
-                <MDBTable striped hover className='mt-3'>
+                <MDBTable className='mt-3'>
                     <MDBTableHead>
                         <tr>
                             <th scope='col'>ID</th>
@@ -35,24 +35,23 @@ const Table = () => {
                                 <td>{item.id}</td>
                                 <td>{item.title}</td>
                                 <td>{item.body}</td>
-                                <Link   to={
-                                    {
+                               
+                                <td > 
+                                    <Link to={{
                                         pathname: `/details-page/${item.id}`,
                                         state: {id: item.id}
-                                        }
-                                }>
-                                <td ><MDBBtn >View Details</MDBBtn></td>
-                                </Link>
+                                        }}>
+                                    <MDBBtn >View Details</MDBBtn>
+                                  </Link>
+                                </td>
                             </tr>
                             ))
                         }
-                    
-                    
                     </MDBTableBody>
                 </MDBTable>
             </MDBContainer>
         </div>
-        );
+    );
 }
 
 export default Table

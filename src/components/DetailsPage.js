@@ -23,7 +23,7 @@ const DetailsPage = () =>{
     return (
         <MDBContainer >
             <MDBRow className='justify-content-center'>
-            <MDBCard style={{ maxWidth: '22rem' }}>
+            <MDBCard className='card-holder' style={{ maxWidth: '22rem' }}>
             <MDBCardBody className='mt-3'>
                 <h2>
                     ID: {post.blogs.id}
