@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   MDBContainer,
   MDBRow,
@@ -7,39 +8,69 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 
-const FormPage = () => {
+const Form = () => {
+  const [formValue, setformValue] = React.useState({
+    userId: "",
+    title: "",
+    body: "",
+  });
+
+  const handleChange = (e) => {
+    setformValue({
+      ...formValue,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        userId: formValue.userId,
+        title: formValue.title,
+        body: formValue.body
+        
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  };
   return (
     <MDBContainer>
       <MDBRow className="justify-content-center mt-5">
         <MDBCol md="4">
-          <form>
-            <p className="h4 text-center mb-4">Write to us</p>
-            <label htmlFor="defaultFormContactNameEx" className="grey-text">
-              User ID
-            </label>
+          <form onSubmit={handleSubmit}>
+            <p className="h4 text-center mb-4">New Record Form</p>
+            <label className="grey-text">User ID</label>
             <input
               type="text"
-              id="defaultFormContactNameEx"
+              name="userId"
+              value={formValue.userId}
               className="form-control"
+              onChange={handleChange}
             />
             <br />
-            <label htmlFor="defaultFormContactEmailEx" className="grey-text">
-              Title
-            </label>
+            <label className="grey-text">Title</label>
             <input
-              type="email"
-              id="defaultFormContactEmailEx"
+              type="text"
+              name="title"
+              value={formValue.title}
               className="form-control"
+              onChange={handleChange}
             />
             <br />
-            <label htmlFor="defaultFormContactMessageEx" className="grey-text">
-              Body
-            </label>
+            <label className="grey-text">Body</label>
             <textarea
               type="text"
-              id="defaultFormContactMessageEx"
+              name="body"
+              value={formValue.body}
               className="form-control"
               rows="3"
+              onChange={handleChange}
             />
             <div className="text-center mt-4">
               <MDBBtn color="warning" outline type="submit">
@@ -54,4 +85,4 @@ const FormPage = () => {
   );
 };
 
-export default FormPage;
+export default Form;

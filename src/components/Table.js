@@ -20,7 +20,7 @@ const Table = () => {
       );
 
       setPosts({ blogs: data });
-      console.log(data);
+      // console.log(data);
     };
     fetchPostList();
   }, [setPosts]);

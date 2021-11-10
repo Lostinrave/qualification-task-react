@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   MDBCard,
   MDBCardBody,
@@ -13,10 +13,9 @@ import {
 
 const DetailsPage = () => {
   let { id } = useParams();
-  console.log(id);
-  let location = useLocation();
-  console.log(location);
-  const [post, setPost] = useState({ blogs: [] });
+  // console.log(id);
+
+  const [post, setPost] = useState({ blog: [] });
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -24,8 +23,8 @@ const DetailsPage = () => {
         `https://jsonplaceholder.typicode.com/posts/${id}`
       );
 
-      setPost({ blogs: data });
-      console.log(data);
+      setPost({ blog: data });
+      // console.log(data);
     };
     fetchPost();
   }, [setPost]);
@@ -34,9 +33,9 @@ const DetailsPage = () => {
       <MDBRow className="justify-content-center">
         <MDBCard className="mt-5" style={{ maxWidth: "22rem" }}>
           <MDBCardBody>
-            <h2>ID: {post.blogs.id}</h2>
-            <MDBCardTitle>{post.blogs.title}</MDBCardTitle>
-            <MDBCardText>{post.blogs.body}</MDBCardText>
+            <h2>ID: {post.blog.id}</h2>
+            <MDBCardTitle>{post.blog.title}</MDBCardTitle>
+            <MDBCardText>{post.blog.body}</MDBCardText>
             <Link to="/">
               <MDBBtn color="warning" outline type="submit">
                 Go Back
