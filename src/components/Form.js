@@ -22,23 +22,32 @@ const Form = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: JSON.stringify({
-        userId: formValue.userId,
-        title: formValue.title,
-        body: formValue.body
-        
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    const data = {
+      userId: formValue.userId,
+      title: formValue.title,
+      body: formValue.body,
+    };
+    axios
+      .post("https://jsonplaceholder.typicode.com/posts", data)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
+  //   fetch("https://jsonplaceholder.typicode.com/posts", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       userId: formValue.userId,
+  //       title: formValue.title,
+  //       body: formValue.body,
+  //     }),
+  //     headers: {
+  //       "Content-type": "application/json; charset=UTF-8",
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((json) => console.log(json));
+  // };
   return (
     <MDBContainer>
       <MDBRow className="justify-content-center mt-5">
